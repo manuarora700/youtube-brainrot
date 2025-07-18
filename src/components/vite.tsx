@@ -45,6 +45,11 @@ const LeftLines = () => {
       ></path>
 
       <path
+        d="M195 87L69.2951 89.2463L-21 96.1614"
+        stroke="url(#last-line-glow-two)"
+      ></path>
+
+      <path
         d="M195 105.5L89.8055 106.623C76.1575 106.623 62.535 107.924 49.0906 110.511L-21 124"
         stroke="url(#ob-linear-gradient-left)"
       ></path>
@@ -55,6 +60,30 @@ const LeftLines = () => {
       ></path>
 
       <defs>
+        <motion.linearGradient
+          id="last-line-glow-two"
+          gradientUnits="userSpaceOnUse"
+          initial={{
+            x1: "0%",
+            x2: "-10%",
+          }}
+          animate={{
+            x1: "120%",
+            x2: "110%",
+          }}
+          transition={{
+            duration: 1,
+            ease: "easeInOut",
+            repeat: Infinity,
+            repeatType: "loop",
+            repeatDelay: 1,
+            delay: 1,
+          }}
+        >
+          <stop offset="0%" stop-color="#FFE358" stop-opacity="0"></stop>
+          <stop offset="0%" stop-color="#FFE358" stop-opacity="1"></stop>
+          <stop offset="100%" stop-color="#FFE358" stop-opacity="0"></stop>
+        </motion.linearGradient>
         <motion.linearGradient
           id="last-line-glow"
           gradientUnits="userSpaceOnUse"
