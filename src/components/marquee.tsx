@@ -19,70 +19,70 @@ export const Marquee = () => {
   const logos = [
     {
       name: "Google",
-      icon: <IconBrandGoogle className="size-10 text-neutral-400" />,
+      icon: <IconBrandGoogle className="size-10 text-white" />,
       speed: 5,
       delay: 0,
       repeatDelay: 5,
     },
     {
       name: "Apple",
-      icon: <IconBrandApple className="size-10 text-neutral-400" />,
-      speed: 7,
+      icon: <IconBrandApple className="size-10 text-white" />,
+      speed: 4,
       delay: 1,
       repeatDelay: 0.5,
     },
     {
       name: "Meta",
-      icon: <IconBrandMeta className="size-10 text-neutral-400" />,
-      speed: 8,
+      icon: <IconBrandMeta className="size-10 text-white" />,
+      speed: 5,
       delay: 4,
       repeatDelay: 2,
     },
     {
       name: "Amazon",
-      icon: <IconBrandAmazon className="size-10 text-neutral-400" />,
-      speed: 15,
+      icon: <IconBrandAmazon className="size-10 text-white" />,
+      speed: 6,
       delay: 6,
       repeatDelay: 0.8,
     },
     {
       name: "Messenger",
-      icon: <IconBrandMessenger className="size-10 text-neutral-400" />,
-      speed: 9,
+      icon: <IconBrandMessenger className="size-10 text-white" />,
+      speed: 4,
       delay: 1,
       repeatDelay: 1.5,
     },
     {
       name: "Netflix",
-      icon: <IconBrandNetflix className="size-10 text-neutral-400" />,
-      speed: 11,
+      icon: <IconBrandNetflix className="size-10 text-white" />,
+      speed: 5,
       delay: 3,
       repeatDelay: 0.7,
     },
     {
       name: "Spotify",
-      icon: <IconBrandSpotify className="size-10 text-neutral-400" />,
-      speed: 13,
+      icon: <IconBrandSpotify className="size-10 text-white" />,
+      speed: 3,
       delay: 5,
       repeatDelay: 1.2,
     },
     {
       name: "Twitter",
-      icon: <IconBrandTwitter className="size-10 text-neutral-400" />,
+      icon: <IconBrandTwitter className="size-10 text-white" />,
       speed: 7,
       delay: 7,
       repeatDelay: 2.5,
     },
     {
       name: "Instagram",
-      icon: <IconBrandInstagram className="size-10 text-neutral-400" />,
-      speed: 14,
+      icon: <IconBrandInstagram className="size-10 text-white" />,
+      speed: 8,
       delay: 1.5,
       repeatDelay: 0.3,
     },
     {
       name: "LinkedIn",
-      icon: <IconBrandLinkedin className="size-10 text-neutral-400" />,
+      icon: <IconBrandLinkedin className="size-10 text-white" />,
       speed: 2,
       delay: 3.5,
       repeatDelay: 1.8,
@@ -90,7 +90,7 @@ export const Marquee = () => {
   ];
   return (
     <div
-      className="w-full h-100 max-w-5xl p-10 flex flex-col justify-center relative mx-auto border-r border-b border-neutral-200 overflow-hidden perspective-distant transform-3d"
+      className="w-full h-100 max-w-5xl p-10 flex flex-col justify-center relative mx-auto border-r border-b border-neutral-200 bg-neutral-50 overflow-hidden perspective-midrange transform-3d"
       style={{
         backgroundImage: `
         linear-gradient(var(--color-neutral-200) 1px, transparent 1px),
@@ -106,14 +106,14 @@ export const Marquee = () => {
         The essential open-source toolkit, from Vercel. Get started with the
         best OSS tools and services for your projects.
       </p>
-      <button className="bg-black text-white px-4 py-3 font-medium text-sm rounded-full w-fit mt-4 flex items-center gap-2">
+      <button className="bg-black text-white px-4 py-3 cursor-pointer font-medium text-sm rounded-full w-fit mt-4 flex items-center gap-2">
         <IconBrandGithub className="size-4" />
         Sign in to claim
       </button>
       <motion.div
-        className="h-full w-full absolute inset-0 max-w-2xl ml-auto flex flex-col justify-evenly [mask-image:linear-gradient(to_right,transparent,black_20%,black_30%,transparent)]"
+        className="h-full w-full  absolute inset-0 max-w-2xl ml-auto flex flex-col justify-evenly [mask-image:linear-gradient(to_right,transparent,black_20%,black_30%,transparent)]"
         style={{
-          rotateY: -50,
+          rotateY: -70,
         }}
       >
         <div className="relative h-1/4">
@@ -189,6 +189,16 @@ const IconContainer = ({
   repeatDelay?: number;
   index?: number;
 }) => {
+  const colors = [
+    "-blue-500",
+    "-red-500",
+    "-green-500",
+    "-purple-500",
+    "-orange-500",
+    "-cyan-500",
+    "-violet-500",
+    "-neutral-500",
+  ];
   return (
     <motion.div
       className="size-14 rounded-lg shadow-md bg-white border border-neutral-200 flex items-center justify-center absolute top-1/2 -translate-y-1/2"
@@ -196,6 +206,9 @@ const IconContainer = ({
       animate={{ left: "-20%" }}
       style={{
         translateZ: index * 500,
+        backgroundColor: `var(--color${
+          colors[Math.floor(Math.random() * colors.length)]
+        })`,
       }}
       transition={{
         duration: speed,
