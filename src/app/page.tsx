@@ -10,19 +10,19 @@ export default function Home() {
         <Column>
           <Card
             href="https://posthog.com"
-            src="/images/1.png"
+            src="https://pro.aceternity.com/brands/1.png"
             alt="Posthog"
             className="lg:rounded-tl-[calc(24px-4px)]"
           />
           <Card
             href="https://vercel.com"
-            src="/images/2.png"
+            src="https://pro.aceternity.com/brands/2.png"
             alt="Something"
             className=""
           />
           <Card
             href="https://pro.aceternity.com"
-            src="/images/3.png"
+            src="https://pro.aceternity.com/brands/3.png"
             alt="Something"
             className=""
           />
@@ -30,25 +30,25 @@ export default function Home() {
         <Column>
           <Card
             href="https://ui.aceternity.com"
-            src="/images/4.png"
+            src="https://pro.aceternity.com/brands/4.png"
             alt="Posthog"
             className=""
           />
           <Card
             href="https://tailwindcss.com"
-            src="/images/5.png"
+            src="https://pro.aceternity.com/brands/5.png"
             alt="Something"
             className=""
           />
           <Card
             href="https://linear.app"
-            src="/images/6.png"
+            src="https://pro.aceternity.com/brands/6.png"
             alt="Something"
             className=""
           />
           <Card
             href="https://v0.dev"
-            src="/images/10.png"
+            src="https://pro.aceternity.com/brands/10.png"
             alt="Something"
             className=""
           />
@@ -56,19 +56,19 @@ export default function Home() {
         <Column>
           <Card
             href="https://resend.com"
-            src="/images/7.png"
+            src="https://pro.aceternity.com/brands/7.png"
             alt="Posthog"
             className=""
           />
           <Card
             href="https://resend.com"
-            src="/images/8.png"
+            src="https://pro.aceternity.com/brands/8.png"
             alt="Something"
             className=""
           />
           <Card
             href="https://nike.com"
-            src="/images/9.png"
+            src="https://pro.aceternity.com/brands/9.png"
             alt="Something"
             className=""
           />
@@ -76,25 +76,25 @@ export default function Home() {
         <Column>
           <Card
             href="https://adidas.com"
-            src="/images/11.png"
+            src="https://pro.aceternity.com/brands/11.png"
             alt="Posthog"
             className="lg:rounded-tr-[calc(24px-4px)]"
           />
           <Card
             href="https://myntra.com"
-            src="/images/12.png"
+            src="https://pro.aceternity.com/brands/12.png"
             alt="Something"
             className=""
           />
           <Card
             href="https://shure.com"
-            src="/images/13.png"
+            src="https://pro.aceternity.com/brands/13.png"
             alt="Something"
             className=""
           />
           <Card
             href="https://posthog.com"
-            src="/images/1.png"
+            src="https://pro.aceternity.com/brands/1.png"
             alt="Something"
             className=""
           />
