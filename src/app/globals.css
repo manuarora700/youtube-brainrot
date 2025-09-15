@@ -24,3 +24,17 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+
+
+.card {
+  @apply relative mb-2 max-w-xl mx-auto overflow-hidden shadow-sm block transition-all duration-200 
+}
+
+.overlay {
+  @apply after:content-[''] after:absolute after:bg-black after:opacity-0 after:w-full after:h-full after:inset-0 hover:after:opacity-90 after:transition-all after:duration-200
+}
+
+
+
