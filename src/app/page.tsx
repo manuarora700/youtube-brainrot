@@ -1,7 +1,9 @@
-import Image from "next/image";
+import { PricingCard } from '@/components/pricing-card';
 
 export default function Home() {
   return (
-    <div className="h-screen w-full flex items-center justify-center"></div>
+    <main className="min-h-screen w-full bg-neutral-950 px-6 py-16 text-white flex items-center justify-center">
+      <PricingCard />
+    </main>
   );
 }
