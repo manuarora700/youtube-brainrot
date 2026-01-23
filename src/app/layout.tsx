@@ -5,6 +5,7 @@ import {
   Geist,
   Geist_Mono,
   Inter,
+  Manrope,
 } from "next/font/google";
 import "./globals.css";
 
@@ -28,6 +29,11 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -35,7 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className}  antialiased`}>{children}</body>
+      <body className={`${inter.className} ${manrope.variable}  antialiased`}>{children}</body>
     </html>
   );
 }
