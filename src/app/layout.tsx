@@ -6,6 +6,7 @@ import {
   Geist,
   Geist_Mono,
   Inter,
+  Signika,
 } from "next/font/google";
 import "./globals.css";
 
@@ -32,6 +33,13 @@ const inter = Inter({
 const baskervville = Baskervville_SC({
   subsets: ["latin"],
   weight: ["500"],
+  variable: "--font-baskervville",
+});
+
+const signika = Signika({
+  subsets: ["latin"],
+  weight: ["500"],
+  variable: "--font-signika",
 });
 
 export default function RootLayout({
@@ -41,7 +49,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} ${baskervville.className}  antialiased`}>{children}</body>
+      <body className={`${inter.className} ${baskervville.variable} ${signika.variable}  antialiased`}>{children}</body>
     </html>
   );
 }

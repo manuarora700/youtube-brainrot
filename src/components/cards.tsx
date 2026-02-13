@@ -21,7 +21,7 @@ export const Cards = () => {
             description:
                 "You have a basic understanding of the topic and can apply it to simple situations.",
             skeleton: <div className="h-50 w-full rounded-xl bg-gradient-to-r from-orange-600 to-orange-600/40"></div>,
-            className: "bg-orange-500",
+            className: "bg-orange-500 [&_h2]:text-white",
             config: {
                 y: -20,
                 x: 0,
@@ -34,8 +34,8 @@ export const Cards = () => {
             title: "Practical Demonstration",
             description:
                 "You can demonstrate the concept in practice with real-world examples.",
-            skeleton: <div className="h-50 w-full rounded-xl bg-gradient-to-r from-blue-600 to-blue-600/40"></div>,
-            className: "bg-blue-500",
+            skeleton: <div className="h-50 w-full rounded-xl bg-gradient-to-r from-neutral-300 to-neutral-400/40"></div>,
+            className: "bg-stone-200 [&_p]:text-black",
             config: {
                 y: 20,
                 x: 180,
@@ -47,8 +47,8 @@ export const Cards = () => {
             title: "Collaborate with AI",
             description:
                 "You can effectively work alongside AI tools to enhance your workflow.",
-            skeleton: <div className="h-50 w-full rounded-xl bg-gradient-to-r from-green-600 to-green-600/40"></div>,
-            className: "bg-green-500",
+            skeleton: <div className="h-50 w-full rounded-xl bg-gradient-to-r from-blue-600 to-blue-600/40"></div>,
+            className: "bg-blue-500 [&_h2]:text-white",
             config: {
                 y: -80,
                 x: 360,
@@ -61,7 +61,7 @@ export const Cards = () => {
             description:
                 "You understand the various approaches and techniques available.",
             skeleton: <div className="h-50 w-full rounded-xl bg-gradient-to-r from-purple-600 to-purple-600/40"></div>,
-            className: "bg-purple-500",
+            className: "bg-purple-500 [&_h2]:text-white",
             config: {
                 y: 20,
                 x: 540,
@@ -73,8 +73,8 @@ export const Cards = () => {
             title: "Interface Kit",
             description:
                 "You have the tools and components needed to build interfaces.",
-            skeleton: <div className="h-50 w-full rounded-xl bg-gradient-to-r from-pink-600 to-pink-600/40"></div>,
-            className: "bg-pink-500",
+            skeleton: <div className="h-50 w-full rounded-xl bg-gradient-to-r from-neutral-950 to-neutral-950/40"></div>,
+            className: "bg-neutral-900 [&_h2]:text-white",
             config: {
                 y: 20,
                 x: 720,
@@ -101,8 +101,12 @@ export const Cards = () => {
         };
     }, []);
 
-    const isActive = () => {
+    const isAnyCardActive = () => {
         return active?.title;
+    };
+
+    const isCurrentActive = (card: Card) => {
+        return active?.title === card.title;
     };
     return (
         <motion.div ref={ref} className="max-w-5xl mx-auto w-full h-160 relative">
@@ -115,20 +119,19 @@ export const Cards = () => {
                             x: 0,
                             scale: 0,
                         }}
-                        layoutId={card.title}
                         onClick={() => {
                             setActive(card);
                         }}
                         animate={{
-                            y: active?.title === card.title ? 0 : (isActive() ? 400 : card.config.y),
-                            x: active?.title === card.title ? 320 : (isActive() ? card.config.x * 0.4 + 244 : card.config.x),
-                            rotate: active?.title === card.title ? 0 : (isActive() ? 0.2 * card.config.rotate : card.config.rotate),
-                            scale: active?.title === card.title ? 1 : (isActive() ? 0.7 : 1),
-                            width: active?.title === card.title ? 400 : 320,
-                            height: active?.title === card.title ? 500 : 400,
+                            y: isCurrentActive(card) ? 0 : (isAnyCardActive() ? 400 : card.config.y),
+                            x: isCurrentActive(card) ? 320 : (isAnyCardActive() ? card.config.x * 0.4 + 244 : card.config.x),
+                            rotate: isCurrentActive(card) ? 0 : (isAnyCardActive() ? 0.2 * card.config.rotate : card.config.rotate),
+                            scale: isCurrentActive(card) ? 1 : (isAnyCardActive() ? 0.7 : 1),
+                            width: isCurrentActive(card) ? 400 : 320,
+                            height: isCurrentActive(card) ? 500 : 400,
                         }}
                         whileHover={{
-                            scale: active?.title === card.title ? 1 : (isActive() ? 0.7 : 1.05),
+                            scale: isCurrentActive(card) ? 1 : (isAnyCardActive() ? 0.7 : 1.05),
                         }}
                         transition={{
                             type: "spring",
@@ -137,7 +140,6 @@ export const Cards = () => {
                         }}
                         style={{
                             zIndex: active?.config.zIndex,
-                            pointerEvents: active?.title === card.title ? "none" : "auto",
                         }}
                         className={cn(
                             "w-80 p-8 absolute inset-0 items-start cursor-pointer  rounded-2xl flex flex-col justify-between overflow-hidden",
@@ -147,15 +149,16 @@ export const Cards = () => {
 
                         {card.skeleton}
                         <div>
-                            <motion.h2 layoutId={card.title + "title"} className="max-w-40 text-4xl text-left font-regular text-white ">
+                            <motion.h2 layoutId={card.title + "title"} className="font-signika max-w-40 text-3xl text-left font-regular ">
                                 {card.title}
                             </motion.h2>
-                            <AnimatePresence>
+                            <AnimatePresence mode="popLayout">
                                 {active?.title === card.title && (
                                     <motion.p
+                                        layoutId={card.title + "description"}
                                         initial={{ opacity: 0, x: 20, y: 20, height: 0 }}
                                         animate={{ opacity: 1, x: 0, y: 0, height: 100 }}
-                                        exit={{ opacity: 0, x: 20, y: 20, height: 0 }}
+                                        exit={{ opacity: 0, x: 40, y: 40, }}
                                         transition={{ duration: 0.3, delay: 0.1, }}
                                         className="text-white/80 text-lg mt-3 text-left"
                                     >

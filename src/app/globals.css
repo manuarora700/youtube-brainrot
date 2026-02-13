@@ -10,6 +10,8 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-baskervville: var(--font-baskervville);
+  --font-signika: var(--font-signika);
 }
 
 @media (prefers-color-scheme: dark) {
