@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import {
   Baskervville,
+  Baskervville_SC,
   Delius,
   Geist,
   Geist_Mono,
@@ -28,6 +29,11 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const baskervville = Baskervville_SC({
+  subsets: ["latin"],
+  weight: ["500"],
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -35,7 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className}  antialiased`}>{children}</body>
+      <body className={`${inter.className} ${baskervville.className}  antialiased`}>{children}</body>
     </html>
   );
 }

@@ -140,7 +140,7 @@ export const Cards = () => {
                             pointerEvents: active?.title === card.title ? "none" : "auto",
                         }}
                         className={cn(
-                            "w-80 p-8 absolute inset-0 items-start cursor-pointer  rounded-2xl flex flex-col justify-between",
+                            "w-80 p-8 absolute inset-0 items-start cursor-pointer  rounded-2xl flex flex-col justify-between overflow-hidden",
                             card.className
                         )}
                     >
@@ -153,10 +153,10 @@ export const Cards = () => {
                             <AnimatePresence>
                                 {active?.title === card.title && (
                                     <motion.p
-                                        initial={{ opacity: 0, height: 0 }}
-                                        animate={{ opacity: 1, height: 50 }}
-                                        exit={{ opacity: 0, height: 0 }}
-                                        transition={{ duration: 0.3 }}
+                                        initial={{ opacity: 0, x: 20, y: 20, height: 0 }}
+                                        animate={{ opacity: 1, x: 0, y: 0, height: 100 }}
+                                        exit={{ opacity: 0, x: 20, y: 20, height: 0 }}
+                                        transition={{ duration: 0.3, delay: 0.1, }}
                                         className="text-white/80 text-lg mt-3 text-left"
                                     >
                                         {card.description}
