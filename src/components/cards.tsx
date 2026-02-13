@@ -120,11 +120,12 @@ export const Cards = () => {
                             setActive(card);
                         }}
                         animate={{
-                            y: active?.title === card.title ? card.config.y : (isActive() ? 200 : card.config.y),
-                            x: active?.title === card.title ? card.config.x : (isActive() ? card.config.x * 0.4 + 244 : card.config.x),
-                            rotate: active?.title === card.title ? 0 : card.config.rotate,
+                            y: active?.title === card.title ? 0 : (isActive() ? 400 : card.config.y),
+                            x: active?.title === card.title ? 320 : (isActive() ? card.config.x * 0.4 + 244 : card.config.x),
+                            rotate: active?.title === card.title ? 0 : (isActive() ? 0.2 * card.config.rotate : card.config.rotate),
                             scale: active?.title === card.title ? 1 : (isActive() ? 0.7 : 1),
                             width: active?.title === card.title ? 400 : 320,
+                            height: active?.title === card.title ? 500 : 400,
                         }}
                         whileHover={{
                             scale: active?.title === card.title ? 1 : (isActive() ? 0.7 : 1.05),
@@ -135,28 +136,28 @@ export const Cards = () => {
                             damping: 15,
                         }}
                         style={{
-                            zIndex: active?.title === card.title ? 100 : card.config.zIndex,
+                            zIndex: active?.config.zIndex,
                             pointerEvents: active?.title === card.title ? "none" : "auto",
                         }}
                         className={cn(
-                            "w-80 p-8 absolute inset-0 items-start cursor-pointer h-96 rounded-2xl flex flex-col justify-between",
+                            "w-80 p-8 absolute inset-0 items-start cursor-pointer  rounded-2xl flex flex-col justify-between",
                             card.className
                         )}
                     >
 
                         {card.skeleton}
                         <div>
-                            <h2 className="text-4xl text-left font-regular text-white max-w-sm">
+                            <motion.h2 layoutId={card.title + "title"} className="max-w-40 text-4xl text-left font-regular text-white ">
                                 {card.title}
-                            </h2>
+                            </motion.h2>
                             <AnimatePresence>
                                 {active?.title === card.title && (
                                     <motion.p
                                         initial={{ opacity: 0, height: 0 }}
-                                        animate={{ opacity: 1, height: "auto" }}
+                                        animate={{ opacity: 1, height: 50 }}
                                         exit={{ opacity: 0, height: 0 }}
                                         transition={{ duration: 0.3 }}
-                                        className="text-white/80 text-sm mt-3 text-left"
+                                        className="text-white/80 text-lg mt-3 text-left"
                                     >
                                         {card.description}
                                     </motion.p>
