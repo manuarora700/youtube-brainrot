@@ -106,28 +106,7 @@ export const Cards = () => {
     };
     return (
         <motion.div ref={ref} className="max-w-5xl mx-auto w-full h-160 relative">
-            {active && (
-                <motion.div
-                    style={{
-                        zIndex: active.config.zIndex,
-                    }}
-                    key={active.title}
-                    layoutId={active.title}
-                    className={cn(
-                        " h-100 w-96 rounded-2xl p-8 flex flex-col justify-between",
-                        active.className
-                    )}
-                >
-                    {active.skeleton}
 
-                    <div>
-
-                        <h2 className="text-4xl  text-left font-regular text-white max-w-sm">
-                            {active.title}
-                        </h2>
-                    </div>
-                </motion.div>
-            )}
             {cards.map((card, index) => (
                 <motion.div key={card.title}>
                     <motion.button
@@ -141,13 +120,14 @@ export const Cards = () => {
                             setActive(card);
                         }}
                         animate={{
-                            y: isActive() ? 20 : card.config.y,
-                            x: isActive() ? card.config.x * 0.6 + 144 : card.config.x,
-                            rotate: card.config.rotate,
-                            scale: isActive() ? 0.7 : 1,
+                            y: active?.title === card.title ? card.config.y : (isActive() ? 200 : card.config.y),
+                            x: active?.title === card.title ? card.config.x : (isActive() ? card.config.x * 0.4 + 244 : card.config.x),
+                            rotate: active?.title === card.title ? 0 : card.config.rotate,
+                            scale: active?.title === card.title ? 1 : (isActive() ? 0.7 : 1),
+                            width: active?.title === card.title ? 400 : 320,
                         }}
                         whileHover={{
-                            scale: isActive() ? 0.7 : 1.05,
+                            scale: active?.title === card.title ? 1 : (isActive() ? 0.7 : 1.05),
                         }}
                         transition={{
                             type: "spring",
@@ -155,20 +135,33 @@ export const Cards = () => {
                             damping: 15,
                         }}
                         style={{
-                            zIndex: card.config.zIndex,
+                            zIndex: active?.title === card.title ? 100 : card.config.zIndex,
                             pointerEvents: active?.title === card.title ? "none" : "auto",
                         }}
                         className={cn(
-                            "w-80 p-8 absolute inset-0  items-start cursor-pointer h-96 rounded-2xl flex flex-col justify-between",
+                            "w-80 p-8 absolute inset-0 items-start cursor-pointer h-96 rounded-2xl flex flex-col justify-between",
                             card.className
                         )}
                     >
 
                         {card.skeleton}
                         <div>
-                            <h2 className="text-4xl  text-left font-regular text-white max-w-sm">
+                            <h2 className="text-4xl text-left font-regular text-white max-w-sm">
                                 {card.title}
                             </h2>
+                            <AnimatePresence>
+                                {active?.title === card.title && (
+                                    <motion.p
+                                        initial={{ opacity: 0, height: 0 }}
+                                        animate={{ opacity: 1, height: "auto" }}
+                                        exit={{ opacity: 0, height: 0 }}
+                                        transition={{ duration: 0.3 }}
+                                        className="text-white/80 text-sm mt-3 text-left"
+                                    >
+                                        {card.description}
+                                    </motion.p>
+                                )}
+                            </AnimatePresence>
                         </div>
                     </motion.button>
                 </motion.div>
