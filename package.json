@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
+    "lucide-react": "^0.574.0",
     "motion": "^12.23.6",
     "next": "15.4.1",
     "react": "19.1.0",
