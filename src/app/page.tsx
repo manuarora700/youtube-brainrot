@@ -1,7 +1,9 @@
-import Image from "next/image";
+import HeroSection from "@/components/ui/hero-section";
 
 export default function Home() {
   return (
-    <div className="h-screen w-full flex items-center justify-center"></div>
+    <main className="min-h-screen bg-gray-100 overflow-x-hidden">
+      <HeroSection />
+    </main>
   );
 }
