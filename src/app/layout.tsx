@@ -28,6 +28,12 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const baskervville = Baskervville({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-baskervville",
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -35,7 +41,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className}  antialiased`}>{children}</body>
+      <body
+        className={`${inter.className} ${baskervville.variable} antialiased`}
+      >
+        {children}
+      </body>
     </html>
   );
 }

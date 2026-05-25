@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fdfcf0;
+  --foreground: #1a1a1a;
 }
 
 @theme inline {
@@ -10,6 +10,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-baskervville: var(--font-baskervville);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +23,13 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes waveform-marquee {
+  from {
+    transform: translate3d(calc(-1 * var(--loop-distance)), 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
 }

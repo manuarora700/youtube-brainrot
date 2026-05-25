@@ -1,7 +1,9 @@
-import Image from "next/image";
+import { Hero } from "@/components/demo";
 
 export default function Home() {
   return (
-    <div className="h-screen w-full flex items-center justify-center"></div>
+    <main className="h-screen w-full">
+      <Hero />
+    </main>
   );
 }
