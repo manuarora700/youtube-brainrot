@@ -7,6 +7,8 @@ import {
   Inter,
 } from "next/font/google";
 import "./globals.css";
+import { DialRoot } from "dialkit";
+import { Agentation } from "agentation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,7 +37,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className}  antialiased`}>{children}</body>
+      <body className={`${inter.className}  antialiased`}>
+        <DialRoot />
+        {process.env.NODE_ENV === "development" && <Agentation />}
+        {children}</body>
     </html>
   );
 }
